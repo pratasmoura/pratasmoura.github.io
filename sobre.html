@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.css">
+    <link rel="stylesheet" href="assets/css/templatemo-hexashop.css">
+    <link rel="stylesheet" href="assets/css/owl-carousel.css">
+    <link rel="stylesheet" href="assets/css/lightbox.css">
+    <link rel="stylesheet" href="mode.css">
+    <link rel="icon" type="image/png" href="assets/images/pm.png">
+    <title>Pratas Moura - Sobre Nós</title>
+
+    <style>
+
+.video-background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      z-index: -1;
+    }
+
+    /* Estilizando o vídeo para ocupar toda a tela */
+    .video-background video {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      min-width: 100%;
+      min-height: 100%;
+      width: auto;
+      height: auto;
+      transform: translate(-50%, -50%);
+    }
+
+    /* Conteúdo em cima do vídeo */
+    .content {
+      position: relative;
+      color: white;
+      text-align: center;
+      padding-top: 50vh;
+      font-size: 2rem;
+    }
+        /* Estilos para a seção "Sobre nós" */
+        .about-section {
+            padding: 60px 0;
+            background-color: #f7f7f7;
+            text-align: center;
+            color: #333;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .logo-container {
+            display: inline-block;
+            border-radius: 50%;
+            overflow: hidden;
+            width: 120px;
+            height: 120px;
+            margin-bottom: 20px;
+        }
+
+        .logo-gif {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .about-title {
+            font-size: 32px;
+            font-weight: bold;
+            color: #222;
+            margin-bottom: 20px;
+        }
+
+        .about-text,
+        .about-quote,
+        .about-description {
+            font-size: 18px;
+            line-height: 1.8;
+            margin: 10px 0;
+            color: #555;
+        }
+
+        .about-quote {
+            font-style: italic;
+            color: #888;
+        }
+
+        .main-border-button a {
+            background-color: #333;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .main-border-button a:hover {
+            background-color: #6e6e6e;
+        }
+
+        /* Estilos para o botão de boas-vindas */
+        .welcome-button {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            background: rgba(0, 0, 0, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            z-index: 1000;
+            text-align: center;
+            flex-direction: column;
+        }
+
+        .welcome-button button {
+            padding: 10px 20px;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            background-color: #f7c948;
+            color: #333;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .welcome-button button:hover {
+            background-color: #e0b935;
+        }
+
+        /* Estilos para o efeito de brilho cintilante */
+        .rain-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .rain-drop {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 50%;
+            animation: twinkle 4s linear infinite;
+            filter: blur(1px);
+            opacity: 0.7;
+        }
+
+        @keyframes twinkle {
+            0%, 100% {
+                transform: translateY(-100%);
+                opacity: 0;
+                transform: scale(0.5);
+            }
+            50% {
+                opacity: 1;
+                transform: scale(1.5);
+            }
+        }
+
+        /* Centraliza o conteúdo do under-footer */
+        .under-footer {
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        .under-footer .logo {
+            display: inline-block;
+            margin-left: 10px;
+            vertical-align: middle;
+        }
+
+        .logo-size {
+            width: 50px; /* Ajuste o tamanho do logotipo conforme necessário */
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="video-background">
+        <video autoplay loop muted>
+            <source src="assets/images/chuva.mp4" type="video/mp4">
+            Seu navegador não suporta a tag de vídeo.
+        </video>
+    </div>
+
+    <!-- Tela de boas-vindas com o botão para iniciar o som -->
+    <div class="welcome-button" id="welcome-screen">
+        <h2>Bem-vindo(a) à Pratas Moura!</h2>
+        <p>Clique para explorar e ouvir nosso som especial de boas-vindas.</p>
+        <button onclick="startSite()">Vamos!</button>
+    </div>
+
+    <!-- Som ao abrir o site -->
+    <audio id="pageSound" src="assets/images/gang.mp3"></audio>
+
+    <script>
+        function startSite() {
+            // Toca o som
+            var audio = document.getElementById("pageSound");
+            audio.play();
+
+            // Oculta a tela de boas-vindas
+            document.getElementById("welcome-screen").style.display = "none";
+        }
+
+        // Gerar pontos de luz cintilantes
+        function createRain() {
+            const rainContainer = document.querySelector(".rain-container");
+
+            for (let i = 0; i < 100; i++) {
+                const drop = document.createElement("div");
+                drop.classList.add("rain-drop");
+                drop.style.left = `${Math.random() * 100}vw`;
+                drop.style.top = `${Math.random() * 100}vh`;
+                drop.style.animationDuration = `${Math.random() * 2 + 3}s`;
+                drop.style.animationDelay = `${Math.random() * 2}s`;
+                rainContainer.appendChild(drop);
+            }
+        }
+
+        // Executa a função de cintilação ao carregar a página
+        window.onload = createRain;
+    </script>
+
+    <!-- Container para a chuva de prata cintilante -->
+    <div class="rain-container"></div>
+
+    <!-- Seção Sobre Nós -->
+    <section class="section about-section" id="about-us">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <!-- Centraliza a Logo em GIF -->
+                    <div class="logo-container">
+                        <img src="assets/images/4d.gif" alt="Pratas Moura Logo" class="logo-gif">
+                    </div>
+                    <h2 class="about-title">Sobre nós</h2>
+                    <p class="about-text">
+                        Fundada em 2024, a Pratas Moura se dedica a trazer elegância e sofisticação para todos. Nossa missão é oferecer peças em prata que combinem com qualquer estilo, levando o toque perfeito de modernidade e tradição a cada um de nossos clientes.
+                    </p>
+                    <p class="about-quote">
+                        <em>"Elegância e qualidade em cada detalhe." - Juliana Moura</em>
+                    </p>
+                    <p class="about-description">
+                        Com um foco inabalável na qualidade e design, acessórios que inspiram e destacam a individualidade de quem os usa. Explore nossa coleção e encontre peças que ressoam com sua personalidade. Na Pratas Moura, a sofisticação está ao seu alcance.
+                    </p>
+                    <div class="main-border-button mt-4">
+                        <a href="products.html">Explore nossos produtos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div class="under-footer">
+        <p>
+            <span class="logo">
+                <img src="assets/images/5d.gif" alt="hexashop ecommerce templatemo" class="logo-size">
+            </span>
+        </p>
+    </div>
+
+    <!-- Scripts -->
+    <script src="assets/js/jquery-2.1.0.min.js"></script>
+    <script src="assets/js/popper.js"></script>
+    <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <script src="mode.js"></script> <!-- Script para alternância de tema -->
+
+</body>
+
+</html>

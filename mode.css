@@ -1,0 +1,217 @@
+
+
+
+.product-image {
+    width: 200px; /* Defina a largura desejada */
+    height: 200px; /* Defina a altura desejada */
+    object-fit: cover; /* Ajusta a imagem para cobrir o espaço sem distorção */
+}
+
+
+
+.main-nav {
+    display: flex;
+    justify-content: space-between; /* Distribui a logo e o menu */
+    align-items: center; /* Centraliza verticalmente a logo e o menu */
+    padding: 10px 10px; /* Ajuste de espaçamento */
+}
+
+.logo {
+    width: 100px; /* Ajuste o tamanho da logo conforme necessário */
+}
+
+.nav-items {
+    display: flex;
+    gap: 200px; /* Espaçamento entre os itens do menu */
+}
+
+.nav-items a {
+    text-decoration: none;
+    color: #000; /* Cor do texto */
+    font-weight: bold; /* Negrito para os itens do menu */
+    padding: 10px; /* Espaçamento interno para os itens do menu */
+    transition: color 0.3s;
+}
+
+.nav-items a:hover {
+    color: #ff6600; /* Cor ao passar o mouse sobre o item */
+}
+
+.theme-switcher {
+    margin-left: auto; /* Move o botão de alternância de tema para o canto direito */
+}
+
+
+.theme-switcher button {
+    padding: 1px;
+    font-size: 10px;
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color: #000; /* Cor do ícone no modo claro */
+    transition: color 0.3s, background-color 0.3s;
+    border-radius: 50px; /* Deixar o botão arredondado */
+}
+
+.theme-switcher button i {
+    font-size: 30px; /* Tamanho do ícone */
+}
+
+/* Modo escuro */
+body.dark-mode {
+    background-color: #000000d8;
+    color: #ffffff;
+}
+
+.header-area.dark-mode {
+    background-color: #222222; /* Cor de fundo do cabeçalho no modo escuro */
+}
+
+body.dark-mode .theme-switcher button {
+    color: #ffcc00; /* Cor do ícone no modo escuro */
+}
+
+/* Estilo do botão no modo escuro */
+.theme-switcher button.dark-mode {
+    background-color: transparent;
+    color: #ffcc00; /* Cor do ícone no modo escuro */
+}
+.theme-switcher {
+    position: fixed;
+    top: 30px; /* Ajuste a distância do topo conforme necessário */
+    left: 1700px; /* Ajuste a distância da esquerda */
+    z-index: 1000; /* Garante que o botão esteja visível acima de outros elementos */
+}
+.main-border-button a {
+    background-color: #ffffff; /* Cor de fundo do botão */
+    color: #000000; /* Cor do texto */
+    padding: 10px 20px; /* Espaçamento interno do botão */
+    border: none; /* Remover borda */
+    border-radius: 5px; /* Arredondar os cantos */
+    text-decoration: none; /* Remover o sublinhado do link */
+    font-size: 16px; /* Tamanho da fonte */
+    font-weight: bold; /* Deixar o texto em negrito */
+    transition: background-color 0.3s ease; /* Efeito de transição suave ao passar o mouse */
+}
+
+/* Alterar a cor ao passar o mouse */
+.main-border-button a:hover {
+    background-color: #ff4400; /* Nova cor de fundo ao passar o mouse */
+    color: #000000; /* Cor do texto ao passar o mouse */
+}
+.section-heading h2 {
+    background-color: #ffffff; /* Cor de fundo para o título */
+    padding: 10px 20px; /* Espaçamento interno */
+    border-radius: 5px; /* Bordas arredondadas, se desejar */
+    display: inline-block; /* Garante que a largura se ajuste ao conteúdo */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adiciona uma leve sombra atrás do título */
+    margin-bottom: 10px; /* Espaçamento entre o título e o subtítulo */
+}
+
+.section-heading span {
+    background-color: #ffffff; /* Cor de fundo para o subtítulo */
+    padding: 5px 15px; /* Espaçamento interno */
+    border-radius: 5px; /* Bordas arredondadas */
+    display: block; /* Garante que o subtítulo fique abaixo do título e ocupe a largura total */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Adiciona uma leve sombra */
+}
+.under-footer p {
+    display: inline-block; /* Faz com que o texto e a logo fiquem na mesma linha */
+    vertical-align: middle; /* Alinha verticalmente os elementos no centro */
+    margin: 0; /* Remove qualquer margem padrão */
+}
+
+.logo img {
+    width: 85px; /* Ajuste o tamanho da logo conforme necessário */
+    height: auto; /* Mantém a proporção do GIF */
+    vertical-align: middle; /* Alinha a logo verticalmente no meio do texto */
+}
+* {box-sizing: border-box;}
+
+.item {
+    border: 1px solid #ffffff; /* Adiciona uma borda ao redor do item */
+    padding: 10px;
+    background-color: #fff; /* Certifique-se de que o fundo seja branco */
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1); /* Uma sombra suave para destacar */
+}
+
+.item .thumb img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    max-height: 300px;
+    border-radius: 55px; /* Se quiser bordas arredondadas */
+    transition: transform 0.3s ease-in-out; /* Para o efeito de zoom suave */
+}
+
+.item:hover .thumb img {
+    transform: scale(1.1); /* Efeito de zoom ao passar o mouse */
+}
+
+.down-content {
+    text-align: center; /* Centraliza o conteúdo de texto abaixo da imagem */
+    padding-top: 10px; /* Adiciona espaçamento entre a imagem e o texto */
+}
+
+.down-content h4, .down-content span {
+    margin: 10; /* Remove espaçamentos extras */
+}
+.navbar-nav .nav-item .fa-shopping-cart {
+    font-size: 24px;
+    margin-left: 10px;
+}
+
+.navbar-nav .nav-item #cart-count {
+    background-color: red;
+    color: white;
+    padding: 2px 6px;
+    border-radius: 50%;
+    font-size: 14px;
+    margin-left: 5px;
+}
+.logo {
+    position: absolute; /* Permite que a logo seja movida livremente */
+    top: 50%; /* Centraliza verticalmente (ajuste conforme necessário) */
+    left: 43%; /* Centraliza horizontalmente (ajuste conforme necessário) */
+    transform: translate(-50%, -50%); /* Garante centralização absoluta */
+    width: 100px; /* Ajuste o tamanho da logo conforme necessário */
+    height: auto; /* Mantém a proporção do GIF */
+    z-index: 1000; /* Garante que a logo fique acima de outros elementos */
+}
+
+/* Se precisar ajustar manualmente */
+.logo.moveable {
+    top: 20px; /* Ajuste para movimentar para cima ou para baixo */
+    left: 30px; /* Ajuste para movimentar para os lados */
+}
+
+/* Exemplo para um layout flexível com a navegação */
+.main-nav {
+    display: flex;
+    justify-content: space-between; /* Espaço entre os itens do menu */
+    align-items: center; /* Centraliza verticalmente os itens do menu */
+    position: relative; /* Para posicionar a logo dentro do nav */
+}
+
+.nav-items {
+    display: flex;
+    gap: 20px; /* Espaçamento entre os itens do menu */
+}
+
+.nav-items a {
+    text-decoration: none;
+    color: #000;
+    font-weight: bold;
+    padding: 10px;
+    transition: color 0.3s;
+}
+
+.nav-items a:hover {
+    color: #ff6600;
+}
+.under-footer {
+    text-align: center;
+}
+.logo img {
+    display: inline-block;
+}
