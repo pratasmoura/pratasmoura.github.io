@@ -170,8 +170,8 @@
                 let row = document.createElement('tr');
                 row.innerHTML = `
                     <td>
-                     
-                     
+                        <img src="${item.image}" alt="${item.name}" class="product-image">
+                        ${item.name}
                     </td>
                     <td>R$${price.toFixed(2)}</td>
                     <td>
@@ -231,31 +231,35 @@
 
         // Função para enviar o pedido via WhatsApp
         function finalizePurchase() {
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            if (cart.length === 0) {
-                alert("Seu carrinho está vazio!");
-                return;
-            }
+    let cart = JSON.parse(localStorage.getItem('cart')) || [];
+    if (cart.length === 0) {
+        alert("Seu carrinho está vazio!");
+        return;
+    }
 
-            let message = "Olá Pratas Moura, gostaria de finalizar a compra dos seguintes produtos:%0A";
-            let total = 0;
+    let message = "Olá Pratas Moura, gostaria de finalizar a compra dos seguintes produtos:%0A";
+    let total = 0;
 
-            cart.forEach(item => {
-                message += `- ${item.name}, Quantidade: ${item.quantity}, Preço: R$${item.price.toFixed(2)}%0A`;
-                total += item.price * item.quantity;
-            });
+    cart.forEach(item => {
+        message += `- ${item.name}, Quantidade: ${item.quantity}, Preço: R$${item.price.toFixed(2)}%0A`;
+        total += item.price * item.quantity;
+    });
 
-            message += `%0ATotal da compra: R$${total.toFixed(2)}`;
+    message += `%0ATotal da compra: R$${
+total.toFixed(2)}`;
 
-            let whatsappNumber = "+55 61 981888030"; // Substitua pelo seu número no formato internacional
-            let whatsappLink = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${message}`;
+    let whatsappNumber = "+55 61 981888030";
+    let whatsappLink = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${message}`;
 
-            // Redirecionar para o WhatsApp
-            window.location.href = whatsappLink;
+    // Adiciona um pequeno atraso para garantir que a URL seja processada corretamente no iOS
+    setTimeout(() => {
+        window.location.href = whatsappLink;
+    }, 500);
 
-            // Limpar o carrinho após a finalização
-            localStorage.removeItem('cart');
-        }
+    localStorage.removeItem('cart');
+}
+
+        
 
         // Carregar os itens do carrinho na inicialização da página
         document.addEventListener('DOMContentLoaded', loadCart);
