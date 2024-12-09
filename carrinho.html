@@ -230,7 +230,7 @@
         }
 
         // Função para enviar o pedido via WhatsApp
-        function finalizePurchase() {
+ function finalizePurchase() {
     let cart = JSON.parse(localStorage.getItem('cart')) || [];
     if (cart.length === 0) {
         alert("Seu carrinho está vazio!");
@@ -247,8 +247,9 @@
 
     message += `%0ATotal da compra: R$${total.toFixed(2)}`;
 
-    let whatsappNumber = "+55 61 981888030";
-    let whatsappLink = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${message}`;
+    let whatsappNumber = "+5561981888030";
+    let whatsappLink = `https://wa.me/${whatsappNumber}?text=${message}`;
+
 
     // Verifica se o dispositivo é iOS
     const isIOS = /iphone|ipod|ipad/i.test(navigator.userAgent);
