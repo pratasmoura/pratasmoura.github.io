@@ -1,11 +1,69 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/png" href="assets/images/pm.png">
-    <title>PRATAS MOURA</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900&display=swap" rel="stylesheet">
+  <link rel="icon" type="image/png" href="assets/images/pm.png">
+  <title>PRATAS MOURA</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #000; /* Altere conforme a necessidade */
+      color: #fff; /* Altere conforme a necessidade */
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden; /* Impede a barra de rolagem devido ao efeito de neve */
+    }
+
+    .snowflake {
+      position: fixed;
+      top: -50px;
+      color: white;
+      font-size: 1em;
+      opacity: 0.8;
+      pointer-events: none;
+      animation: fall linear infinite;
+    }
+
+    @keyframes fall {
+      0% {
+        transform: translateY(0) translateX(0);
+      }
+      100% {
+        transform: translateY(100vh) translateX(calc(50vw - 10px));
+      }
+    }
+  </style>
+</head>
+<body>
+  
+  
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const snowflakeCount = 50; // Número de flocos de neve
+      const body = document.body;
+
+      for (let i = 0; i < snowflakeCount; i++) {
+        const snowflake = document.createElement('div');
+        snowflake.className = 'snowflake';
+        snowflake.textContent = '❄'; // Alterar para outro caractere, se necessário
+        snowflake.style.left = Math.random() * 100 + 'vw';
+        snowflake.style.animationDuration = Math.random() * 3 + 2 + 's'; // Entre 2 e 5 segundos
+        snowflake.style.fontSize = Math.random() * 20 + 10 + 'px'; // Entre 10px e 30px
+        snowflake.style.animationDelay = Math.random() * 15 + 's'; // Atraso aleatório
+        body.appendChild(snowflake);
+
+        // Remove o floco de neve após o término da animação
+        snowflake.addEventListener('animationend', () => {
+          snowflake.remove();
+        });
+      }
+    });
+  </script>
+</body>
+
 
     <!-- Folhas de estilo -->
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
@@ -176,9 +234,9 @@
                         <div class="thumb">
                             <div class="inner-content">
                                 <h4>Pratas Moura</h4>
-                                <span>PEÇA SUA JÓIA FAVORITA ABAIXO.</span>
+                                <span>PEÇA SUA JÓIA FAVORITA AQUI EMBAIXO.</span>
                                 <div class="main-border-button">
-                                    <a href="https://api.whatsapp.com/send?phone=555561981888030&text=Tenho%20interesse!%0A%0APoderia%20me%20encaminhar%20o%20cat%C3%A1lago%20por%20favor?" target="_blank">Whatssap</a>
+                                    <a href="https://api.whatsapp.com/send?phone=5555618188803&text=Tenho%20interesse!%0A%0APoderia%20me%20encaminhar%20o%20cat%C3%A1lago%20por%20favor?" target="_blank">Whatssap</a>
                                 </div>
 
                                 <style>
@@ -231,7 +289,7 @@
                                                 </div>
                                             </div>
                                         </div>
-                                        <img src="assets/images/COLAR.jpg">
+                                        <img src="assets/images/choker-coracoes-vazados-pendurados_2024-08-04_11-15-03_0_304.jpeg">
                                     </div>
                                 </div>
                             </div>
@@ -250,11 +308,11 @@
                                                 <h4>Anéis</h4>
                                                 <p>Elegância no pequeno detalhe.</p>
                                                 <div class="main-border-button">
-                                                    <a href="https://drive.google.com/file/d/1ms3S8Ndwc4Uzc3nqP66YsEDi8-ZEJhKH/view?usp=sharing" target="_blank">Consulte</a>
+                                                    <a href="" target="_blank">Consulte</a>
                                                 </div>
                                             </div>
                                         </div>
-                                        <img src="assets/images/ANEL-COROA.jpg">
+                                        <img src="assets/images/anel-aparador-cravacao-embutida_2024-09-27_19-21-41_0_182.jpg">
                                     </div>
                                 </div>
                             </div>
@@ -284,57 +342,6 @@
                                     </div>
                                 </div>
                             </div>
-
-                            <div class="col-lg-6">
-                                <div class="right-first-image">
-                                    <div class="thumb">
-                                        <div class="inner-content">
-                                            <h4>Braceletes</h4>
-                                            <span>Peça já a sua</span>
-                                        </div>
-                                        <div class="hover-content">
-                                            <div class="inner">
-                                                <h4>Braceletes</h4>
-                                                <p>Elegância no pulso: descubra nossos braceletes em prata.</p>
-                                                <div class="main-border-button">
-                                                    <a href="https://drive.google.com/file/d/10NjWmiA8IvnqfMDi3vUOxrjjLCuqxYgk/view?usp=sharing" target="_blank">Consulte</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <img src="assets/images/bracelete.png">
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-
-
-                            <div class="col-lg-6">
-                                <div class="right-first-image">
-                                    <div class="thumb">
-                                        <div class="inner-content">
-                                            <h4>Braceletes</h4>
-                                            <span>Peça já a sua</span>
-                                        </div>
-                                        <div class="hover-content">
-                                            <div class="inner">
-                                                <h4>Braceletes</h4>
-                                                <p>Elegância no pulso: descubra nossos braceletes em prata.</p>
-                                                <div class="main-border-button">
-                                                    <a href="https://drive.google.com/file/d/10NjWmiA8IvnqfMDi3vUOxrjjLCuqxYgk/view?usp=sharing" target="_blank">Consulte</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <img src="assets/images/bracelete.png">
-                                    </div>
-                                </div>
-                            </div>
-
-
-
-
-
                             <div class="col-lg-6">
                                 <div class="right-first-image">
                                     <div class="thumb">
@@ -425,7 +432,7 @@
                                     <div class="thumb">  
                                         <div class="hover-content">  
                                             <ul>
-                                                <li><a href="#" onclick="addToCart('Colar Coração Vazado Micro Cravejado', 150.00)"><i class="fa fa-shopping-cart"></i></a></li>
+                                                <li><a href="#" onclick="addToCart('Colar Coração Vazado Micro Cravejado', 85.00)"><i class="fa fa-shopping-cart"></i></a></li>
                                             </ul>
                                         </div>
                                         <img src="assets/images/COLAR3.jpg" alt="Colar Coração Vazado Micro Cravejado">
@@ -473,7 +480,7 @@
                                     <div class="thumb">
                                         <div class="hover-content">
                                             <ul>
-                                                <li><a href="#" onclick="addToCart('Choker Trevo Pendurado com 6 Zircônias Na Lateral', 140.00)"><i class="fa fa-shopping-cart"></i></a></li>
+                                                <li><a href="#" onclick="addToCart('Choker Trevo Pendurado com 6 Zircônias Na Lateral', 95.00)"><i class="fa fa-shopping-cart"></i></a></li>
                                             </ul>
                                         </div>
                                         <img src="assets/images/COLAR6.png" alt="Choker Trevo Pendurado com 6 Zircônias Na Lateral">
@@ -733,7 +740,7 @@
                                     <div class="thumb">
                                         <div class="hover-content">
                                             <ul>
-                                                <li><a href="#" onclick="addToCart('Pulseira 5 Trevos Cravejados', 75.00)"><i class="fa fa-shopping-cart"></i></a></li>
+                                                <li><a href="#" onclick="addToCart('Pulseira 5 Trevos Cravejados', 260.00)"><i class="fa fa-shopping-cart"></i></a></li>
                                             </ul>
                                         </div>
                                         <img src="assets/images/pulseira.jpg" alt="Pulseira 5 Trevos Cravejados">
@@ -797,14 +804,14 @@
                                     <div class="thumb">
                                         <div class="hover-content">
                                             <ul>
-                                                <li><a href="#" onclick="addToCart('Pulseira Nossa Senhora Fé em cada detalhe', 50.00)"><i class="fa fa-shopping-cart"></i></a></li>
+                                                <li><a href="#" onclick="addToCart('Pulseira Nossa Senhora Fé em cada detalhe', 43.00)"><i class="fa fa-shopping-cart"></i></a></li>
                                             </ul>
                                         </div>
                                         <img src="assets/images/pulseira4.jpg" alt="Pulseira Nossa Senhora">
                                     </div>
                                     <div class="down-content">
                                         <h4>Pulseira Nossa Senhora - Fé em cada detalhe</h4>
-                                        <span>$50.00</span>
+                                        <span>$43.00</span>
                                     </div>
                                 </div>
         
@@ -842,7 +849,7 @@
                                     <div class="thumb">  
                                         <div class="hover-content">  
                                             <ul>
-                                                <li><a href="#" onclick="addToCart('Pulseira para berloques tradicional cravejada - 2mm', 43.90)"><i class="fa fa-shopping-cart"></i></a></li>
+                                                <li><a href="#" onclick="addToCart('Pulseira para berloques tradicional cravejada - 2mm', 220.90)"><i class="fa fa-shopping-cart"></i></a></li>
                                             </ul>
                                         </div>
                                         <img src="assets/images/pulseira-para-berloques-tradicional-cravejada-de-3mm_2024-06-21_20-00-29_0_33.jpg" alt="Pulseira para berloques
@@ -1091,7 +1098,7 @@
                                     <div class="thumb">
                                         <div class="hover-content">
                                             <ul>
-                                                <li><a href="#" onclick="addToCart('Kit 5 Pares de Brincos Ponto de Luz Redondo', 80.00)"><i class="fa fa-shopping-cart"></i></a></li>
+                                                <li><a href="#" onclick="addToCart('Kit 5 Pares de Brincos Ponto de Luz Redondo',50.00)"><i class="fa fa-shopping-cart"></i></a></li>
                                             </ul>
                                         </div>
                                         <img src="assets/images/Brinco.jpg" alt="Kit 5 Pares de Brincos Ponto de Luz Redondo">
@@ -1107,7 +1114,7 @@
                                     <div class="thumb">
                                         <div class="hover-content">
                                             <ul>
-                                                <li><a href="#" onclick="addToCart('Brinco Mini Pena Envelhecida', 12.00)"><i class="fa fa-shopping-cart"></i></a></li>
+                                                <li><a href="#" onclick="addToCart('Brinco Mini Pena Envelhecida', 25.00)"><i class="fa fa-shopping-cart"></i></a></li>
                                             </ul>
                                         </div>
                                         <img src="assets/images/Brinco1.jpg" alt="Brinco Mini Pena Envelhecida">
@@ -1123,7 +1130,7 @@
                                     <div class="thumb">
                                         <div class="hover-content">
                                             <ul>
-                                                <li><a href="#" onclick="addToCart('Argola Oval com Tarraxa Fio 3mm', 30.00)"><i class="fa fa-shopping-cart"></i></a></li>
+                                                <li><a href="#" onclick="addToCart('Argola Oval com Tarraxa Fio 3mm', 37.00)"><i class="fa fa-shopping-cart"></i></a></li>
                                             </ul>
                                         </div>
                                         <img src="assets/images/Brinco4.jpg" alt="Argola Oval com Tarraxa Fio 3mm">
@@ -1139,7 +1146,7 @@
                                     <div class="thumb">
                                         <div class="hover-content">
                                             <ul>
-                                                <li><a href="#" onclick="addToCart('Argola Coração Fio Ondulado Vários Tamanhos', 120.00)"><i class="fa fa-shopping-cart"></i></a></li>
+                                                <li><a href="#" onclick="addToCart('Argola Coração Fio Ondulado Vários Tamanhos', 20.00)"><i class="fa fa-shopping-cart"></i></a></li>
                                             </ul>
                                         </div>
                                         <img src="assets/images/Brinco3.jpg" alt="Argola Coração Fio Ondulado Vários Tamanhos">
