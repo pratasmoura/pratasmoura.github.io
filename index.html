@@ -72,6 +72,7 @@
     <link rel="stylesheet" href="assets/css/owl-carousel.css">
     <link rel="stylesheet" href="assets/css/lightbox.css">
     <link rel="stylesheet" href="mode.css"> 
+   
 
     <!-- Estilos personalizados -->
     <style>
@@ -1398,43 +1399,118 @@
     </section>
     <!-- ***** Social Area Ends ***** -->
 
-    <div class="subscribe">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="section-heading">
-                        <h2>10% Off na primeira compra </h2>
-                        <span>Basta nos um enviar o e-mail para garantir seu desconto.</span>
-                    </div>
-                    <form id="subscribe" action="" method="get">
-                        <div class="row">
-                          <div class="col-lg-5">
-                            <fieldset>
-                              <input name="nome" type="text" id="nome" placeholder="Seu nome" required="">
-                            </fieldset>
-                          </div>
-                          <div class="col-lg-5">
-                            <fieldset>
-                              <input name="email" type="text" id="email" pattern="[^ @]*@[^ @]*" placeholder="E-mail" required="">
-                            </fieldset>
-                          </div>
-                          <div class="col-lg-2">
-                            <fieldset>
-                                <div class="main-border-button">
-                                    <a href="https://mail.google.com/mail/">Enviar</a>
-                                    
-                            </fieldset>
-                          </div>
-                        </div>
-                    </form>
-                </div>
+    <!DOCTYPE html>
+    <html lang="pt-BR">
+    <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     
+      
+      <style>
+        /* Escopo do formulário */
+        #form-container {
+          font-family: 'Arial', sans-serif;
+          background: #fff;
+          padding: 20px;
+          border-radius: 10px;
+          box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+          max-width: 400px;
+          width: 100%;
+          box-sizing: border-box;
+          margin: 20px auto;
+        }
+    
+        #form-container input,
+        #form-container textarea,
+        #form-container button {
+          width: 100%;
+          padding: 10px 15px;
+          margin-bottom: 15px;
+          border: 1px solid #ccc;
+          border-radius: 5px;
+          font-size: 16px;
+          box-sizing: border-box;
+          transition: all 0.3s ease;
+        }
+    
+        #form-container input:focus,
+        #form-container textarea:focus {
+          border-color: #a0c1b8;
+          outline: none;
+          box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
+        }
+    
+        #form-container button {
+          background: #92c1a3;
+          color: #fff;
+          border: none;
+          font-weight: bold;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          cursor: pointer;
+        }
+    
+        #form-container button img {
+          width: 20px;
+          margin-right: 10px;
+        }
+    
+        #form-container button:hover {
+          background: #7ba892;
+        }
+    
+        #form-container input::placeholder,
+        #form-container textarea::placeholder {
+          color: #aaa;
+        }
+      </style>
+    </head>
+    <body>
+      <div id="form-container">
+        <h1>Cupom de desconto</h1><br>
+        <form action="#" method="get" onsubmit="abrirWhatsapp()">
+          <input type="text" name="nome" id="nome" placeholder="Nome" required><br>
+          <input type="tel" name="telefone" id="telefone" placeholder="Telefone" required><br>
+          <input type="email" name="email" id="email" placeholder="E-mail" required><br>
+          <textarea name="msg" id="msg" placeholder="Mensagem" cols="30" rows="5" required></textarea><br>
+          <button type="submit">
+            <img src="https://matheuscostadesign.github.io/enviar-para-whatsapp/assets/whatsapp.svg" alt="Icone Whatsapp">
+            <span>Enviar</span>
+          </button>
+        </form>
+      </div>
+    
+      <script>
+        function abrirWhatsapp() {
+          var nome = document.getElementById("nome").value;
+          var telefone = document.getElementById("telefone").value;
+          var email = document.getElementById("email").value;
+          var msg = document.getElementById("msg").value;
+    
+          var url = "https://api.whatsapp.com/send?phone=61981888030&text=Ol%C3%A1%20Pratas%20Moura.%20Tenho%20interesse!%20" +
+            "*Cupom de desconto*" + "%0a" +
+            "*Nome*: " + nome + "%0a" +
+            "*Telefone*: " + telefone + "%0a" +
+            "*E-mail*: " + email + "%0a" +
+            "*Mensagem*: " + msg;
+    
+          window.open(url, '_blank').focus();
+        }
+      </script>
+    </body>
+    </html>
+    
+
+
+      </form>
                 <div class="col-lg-4">
                     <div class="row">
                         <div class="col-6">
                             <ul>
                                 <li>Localidade:<br><span>Planaltina - DF</span></li>
                                 <li>Telefone:<br><span>+55 61 8188-8030</span></li>
-                                <li>Instagram:<br><span><a href="#">@pratassmoura</a></span></li>
+                                <li>Instagram:<br><span><a href="https://www.instagram.com/pratassmoura/">@pratassmoura</a></span></li>
                             </ul>
                         </div>
                         <div class="col-6">
