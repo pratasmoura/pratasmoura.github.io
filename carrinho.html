@@ -245,26 +245,36 @@
         total += item.price * item.quantity;
     });
 
-    message += `%0ATotal da compra: R$${
-total.toFixed(2)}`;
+    message += `%0ATotal da compra: R$${total.toFixed(2)}`;
 
     let whatsappNumber = "+55 61 981888030";
     let whatsappLink = `https://api.whatsapp.com/send?phone=${whatsappNumber}&text=${message}`;
 
-    // Adiciona um pequeno atraso para garantir que a URL seja processada corretamente no iOS
-    setTimeout(() => {
-        window.location.href = whatsappLink;
-    }, 500);
+    // Verifica se o dispositivo é iOS
+    const isIOS = /iphone|ipod|ipad/i.test(navigator.userAgent);
+
+    if (isIOS) {
+        // Para iOS, abre o WhatsApp em uma nova janela com um pequeno atraso
+        setTimeout(() => {
+            window.open(whatsappLink, '_blank');  // Abre em uma nova aba
+        }, 1000); // Aumente o atraso se necessário
+    } else {
+        // Para Android, usa o redirecionamento normal
+        setTimeout(() => {
+            window.location.href = whatsappLink;
+        }, 500);
+    }
 
     localStorage.removeItem('cart');
 }
 
-        
+// Carregar os itens do carrinho na inicialização da página
+document.addEventListener('DOMContentLoaded', loadCart);
 
-        // Carregar os itens do carrinho na inicialização da página
-        document.addEventListener('DOMContentLoaded', loadCart);
     </script>
 
 </body>
 
 </html>
+
+
