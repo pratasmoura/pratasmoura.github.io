@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="assets/css/font-awesome.css">
     <link rel="stylesheet" href="mode.css">
     <link rel="icon" type="image/png" href="assets/images/pm.png">
-    <script src="assets/js/cart.js"></script>
     <style>
         .cart-container {
             padding: 20px;
@@ -21,11 +20,14 @@
         .cart-items {
             width: 100%;
             margin-bottom: 20px;
+            border-collapse: collapse;
         }
 
-        .cart-items th, .cart-items td {
+        .cart-items th,
+        .cart-items td {
             padding: 10px;
             text-align: left;
+            border: 1px solid #ddd;
         }
 
         .cart-summary {
@@ -150,44 +152,120 @@
     </div>
 
     <script>
-        // Função para enviar o pedido via WhatsApp
+        const FREE_SHIPPING_THRESHOLD = 100.00;
+
+        function loadCart() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let cartItemsBody = document.getElementById('cart-items-body');
+            let total = 0;
+            cartItemsBody.innerHTML = '';
+
+            if (cart.length === 0) {
+                cartItemsBody.innerHTML = '<tr><td colspan="5">Seu carrinho está vazio!</td></tr>';
+                updateProgressBar(0);
+                return;
+            }
+
+            cart.forEach(item => {
+                let price = parseFloat(item.price) || 0;
+                let quantity = parseInt(item.quantity) || 1;
+                let itemTotal = price * quantity;
+                total += itemTotal;
+
+                let row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>
+                        <img src="${item.image}" alt="${item.name}" class="product-image">
+                        ${item.name}
+                    </td>
+                    <td>R$${price.toFixed(2)}</td>
+                    <td>
+                        <button class="quantity-button" onclick="updateQuantity('${item.name}', -1)">-</button>
+                        ${quantity}
+                        <button class="quantity-button" onclick="updateQuantity('${item.name}', 1)">+</button>
+                    </td>
+                    <td>R$${itemTotal.toFixed(2)}</td>
+                    <td><span class="remove-button" onclick="removeItem('${item.name}')">✖</span></td>
+                `;
+                cartItemsBody.appendChild(row);
+            });
+
+            document.getElementById('cart-total').textContent = total.toFixed(2);
+            updateProgressBar(total);
+        }
+
+        function updateQuantity(productName, change) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+
+            cart = cart.map(item => {
+                if (item.name === productName) {
+                    item.quantity += change;
+                    if (item.quantity < 1) item.quantity = 1;
+                }
+                return item;
+            });
+
+            localStorage.setItem('cart', JSON.stringify(cart));
+            loadCart();
+        }
+
+        function removeItem(productName) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart = cart.filter(item => item.name !== productName);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            loadCart();
+        }
+
+        function updateProgressBar(total) {
+            let remainingValue = FREE_SHIPPING_THRESHOLD - total;
+            if (remainingValue <= 0) {
+                remainingValue = 0;
+            }
+
+            document.getElementById('remaining-value').textContent = remainingValue.toFixed(2);
+
+            let progressPercentage = (total / FREE_SHIPPING_THRESHOLD) * 100;
+            if (progressPercentage > 100) progressPercentage = 100;
+
+            document.getElementById('progress-fill').style.width = progressPercentage + '%';
+            document.getElementById('progress-fill').textContent = Math.floor(progressPercentage) + '%';
+        }
+
         function finalizePurchase() {
             let cart = JSON.parse(localStorage.getItem('cart')) || [];
             if (cart.length === 0) {
                 alert("Seu carrinho está vazio!");
                 return;
             }
-    
-            let message = "Olá Pratas Moura, gostaria de finalizar a compra dos seguintes produtos:%0A";
+
+            let message = "Olá Pratas Moura, gostaria de finalizar a compra dos seguintes produtos:\n";
             let total = 0;
-    
+
             cart.forEach(item => {
-                message += `- ${item.name}, Quantidade: ${item.quantity}, Preço: R$${item.price.toFixed(2)}%0A`;
+                message += `- ${item.name}, Quantidade: ${item.quantity}, Preço: R$${item.price.toFixed(2)}\n`;
                 total += item.price * item.quantity;
             });
-    
-            message += `%0ATotal da compra: R$${total.toFixed(2)}`;
-    
+
+            message += `\nTotal da compra: R$${total.toFixed(2)}`;
+
+            let encodedMessage = encodeURIComponent(message);
+
             let whatsappNumber = "+5561981888030";
-            let whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
-    
-            // Verifica se o dispositivo é iOS
+            let whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodedMessage}`;
+
             const isIOS = /iphone|ipod|ipad/i.test(navigator.userAgent.toLowerCase());
-    
+
             if (isIOS) {
-                // No iOS, abrir diretamente no WhatsApp usando uma nova aba
                 window.open(whatsappLink, '_blank');
             } else {
-                // Em outros dispositivos, redirecionar diretamente
                 window.location.href = whatsappLink;
             }
-    
-            // Limpa o carrinho após a finalização
+
             localStorage.removeItem('cart');
         }
+
+        document.addEventListener('DOMContentLoaded', loadCart);
     </script>
-    
-        
 
 </body>
 
