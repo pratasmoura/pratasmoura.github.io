@@ -107,6 +107,21 @@
             margin-left: 10px;
         }
 
+        .quantity-button {
+            display: inline-block;
+            padding: 5px 10px;
+            margin: 0 5px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .quantity-button:hover {
+            background-color: #45a049;
+        }
+
         @media (max-width: 768px) {
             .cart-items th,
             .cart-items td {
@@ -128,6 +143,10 @@
 
             .progress-fill {
                 font-size: 12px;
+            }
+
+            .quantity-button {
+                display: none;
             }
         }
 
