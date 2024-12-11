@@ -11,8 +11,6 @@
     <link rel="stylesheet" href="mode.css">
     <link rel="icon" type="image/png" href="assets/images/pm.png">
     <style>
-
-
         body {
             font-family: Arial, sans-serif;
             margin: 0;
@@ -109,18 +107,30 @@
             margin-left: 10px;
         }
 
+        .quantity-button {
+            display: inline-block;
+            padding: 5px 5px;
+            margin: 0 5px;
+            background-color: #ffffff;
+            color: rgb(0, 0, 0);
+            border: none;
+            border-radius: 50%;
+            cursor: pointer;
+            font-size: 11px;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .quantity-button:hover {
+            background-color: #45a049;
+            transform: scale(1.1);
+        }
+
         @media (max-width: 768px) {
             .cart-items th,
             .cart-items td {
                 font-size: 12px;
                 padding: 6px;
-            }
-
-            .cart-items th:nth-child(3),
-            .cart-items td:nth-child(3),
-            .cart-items th:nth-child(5),
-            .cart-items td:nth-child(5) {
-                display: none;
             }
 
             .finalize-button {
@@ -162,8 +172,6 @@
                 <a class="navbar-brand" href="index.html" style="margin-left: 130px;">
                     <img src="assets/images/4d.gif" alt="Logo" style="max-width: 70px; height: auto;">
                 </a>
-                
-                
                 <div class="collapse navbar-collapse">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
