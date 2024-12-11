@@ -150,132 +150,45 @@
     </div>
 
     <script>
-        const FREE_SHIPPING_THRESHOLD = 100.00;
-
-        // Função para carregar os itens do carrinho e preencher a tabela
-        function loadCart() {
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            let cartItemsBody = document.getElementById('cart-items-body');
-            let total = 0;
-            cartItemsBody.innerHTML = ''; // Limpa a tabela antes de recarregar
-
-            cart.forEach(item => {
-                // Garantindo que price e quantity sejam números
-                let price = parseFloat(item.price) || 0;
-                let quantity = parseInt(item.quantity) || 1;
-                let itemTotal = price * quantity;
-                total += itemTotal;
-
-                // Criando a linha do item no carrinho
-                let row = document.createElement('tr');
-                row.innerHTML = `
-                    <td>
-                        <img src="${item.image}" alt="${item.name}" class="product-image">
-                        ${item.name}
-                    </td>
-                    <td>R$${price.toFixed(2)}</td>
-                    <td>
-                        <button class="quantity-button" onclick="updateQuantity('${item.name}', -1)">-</button>
-                        ${quantity}
-                        <button class="quantity-button" onclick="updateQuantity('${item.name}', 1)">+</button>
-                    </td>
-                    <td>R$${itemTotal.toFixed(2)}</td>
-                    <td><span class="remove-button" onclick="removeItem('${item.name}')">✖</span></td>
-                `;
-                cartItemsBody.appendChild(row);
-            });
-
-            document.getElementById('cart-total').textContent = total.toFixed(2);
-            updateProgressBar(total);
-        }
-
-        // Função para atualizar a quantidade de um item no carrinho
-        function updateQuantity(productName, change) {
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-
-            cart = cart.map(item => {
-                if (item.name === productName) {
-                    item.quantity += change;
-                    if (item.quantity < 1) item.quantity = 1; // Não permite quantidade menor que 1
-                }
-                return item;
-            });
-
-            localStorage.setItem('cart', JSON.stringify(cart));
-            loadCart(); // Recarrega a tabela de produtos
-        }
-
-        // Função para remover um item do carrinho
-        function removeItem(productName) {
-            let cart = JSON.parse(localStorage.getItem('cart')) || [];
-            cart = cart.filter(item => item.name !== productName);
-            localStorage.setItem('cart', JSON.stringify(cart));
-            loadCart();
-        }
-
-        // Função para atualizar a barra de progresso do frete grátis
-        function updateProgressBar(total) {
-            let remainingValue = FREE_SHIPPING_THRESHOLD - total;
-            if (remainingValue <= 0) {
-                remainingValue = 0;
-            }
-
-            document.getElementById('remaining-value').textContent = remainingValue.toFixed(2);
-
-            let progressPercentage = (total / FREE_SHIPPING_THRESHOLD) * 100;
-            if (progressPercentage > 100) progressPercentage = 100;
-
-            document.getElementById('progress-fill').style.width = progressPercentage + '%';
-            document.getElementById('progress-fill').textContent = Math.floor(progressPercentage) + '%';
-        }
-
         // Função para enviar o pedido via WhatsApp
- function finalizePurchase() {
-    let cart = JSON.parse(localStorage.getItem('cart')) || [];
-    if (cart.length === 0) {
-        alert("Seu carrinho está vazio!");
-        return;
-    }
-
-    let message = "Olá Pratas Moura, gostaria de finalizar a compra dos seguintes produtos:%0A";
-    let total = 0;
-
-    cart.forEach(item => {
-        message += `- ${item.name}, Quantidade: ${item.quantity}, Preço: R$${item.price.toFixed(2)}%0A`;
-        total += item.price * item.quantity;
-    });
-
-    message += `%0ATotal da compra: R$${total.toFixed(2)}`;
-
-    let whatsappNumber = "+5561981888030";
-    let whatsappLink = `https://wa.me/${whatsappNumber}?text=${message}`;
-
-
-    // Verifica se o dispositivo é iOS
-    const isIOS = /iphone|ipod|ipad/i.test(navigator.userAgent);
-
-    if (isIOS) {
-        // Para iOS, abre o WhatsApp em uma nova janela com um pequeno atraso
-        setTimeout(() => {
-            window.open(whatsappLink, '_blank');  // Abre em uma nova aba
-        }, 1000); // Aumente o atraso se necessário
-    } else {
-        // Para Android, usa o redirecionamento normal
-        setTimeout(() => {
-            window.location.href = whatsappLink;
-        }, 500);
-    }
-
-    localStorage.removeItem('cart');
-}
-
-// Carregar os itens do carrinho na inicialização da página
-document.addEventListener('DOMContentLoaded', loadCart);
-
+        function finalizePurchase() {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            if (cart.length === 0) {
+                alert("Seu carrinho está vazio!");
+                return;
+            }
+    
+            let message = "Olá Pratas Moura, gostaria de finalizar a compra dos seguintes produtos:%0A";
+            let total = 0;
+    
+            cart.forEach(item => {
+                message += `- ${item.name}, Quantidade: ${item.quantity}, Preço: R$${item.price.toFixed(2)}%0A`;
+                total += item.price * item.quantity;
+            });
+    
+            message += `%0ATotal da compra: R$${total.toFixed(2)}`;
+    
+            let whatsappNumber = "+5561981888030";
+            let whatsappLink = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(message)}`;
+    
+            // Verifica se o dispositivo é iOS
+            const isIOS = /iphone|ipod|ipad/i.test(navigator.userAgent.toLowerCase());
+    
+            if (isIOS) {
+                // No iOS, abrir diretamente no WhatsApp usando uma nova aba
+                window.open(whatsappLink, '_blank');
+            } else {
+                // Em outros dispositivos, redirecionar diretamente
+                window.location.href = whatsappLink;
+            }
+    
+            // Limpa o carrinho após a finalização
+            localStorage.removeItem('cart');
+        }
     </script>
+    
+        
 
 </body>
 
 </html>
-
-
